@@ -35,6 +35,7 @@ echo '<script>window.location.href=manage-students.php</script>';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
+    <meta http-equiv="refresh" content="300; url=http://localhost/courses/logout.php ">
     <meta name="author" content="" />
     <title>Student Profile</title>
     <link href="../assets/css/bootstrap.css" rel="stylesheet" />
@@ -44,13 +45,11 @@ echo '<script>window.location.href=manage-students.php</script>';
 
 <body>
 <?php include('includes/header.php');?>
-    <!-- LOGO HEADER END-->
 <?php if($_SESSION['alogin']!="")
 {
  include('includes/menubar.php');
 }
  ?>
-    <!-- MENU SECTION END-->
     <div class="content-wrapper">
         <div class="container">
               <div class="row">
@@ -100,6 +99,17 @@ while($row=mysqli_fetch_array($sql))
   </div>  
 
 
+<div class="form-group">
+    <label for="studentphoto">Student Photo  </label>
+   <?php if($row['studentPhoto']==""){ ?>
+   <img src="../studentphoto/noimage.png" width="200" height="200"><?php } else {?>
+   <img src="../studentphoto/<?php echo htmlentities($row['studentPhoto']);?>" width="200" height="200">
+   <?php } ?>
+  </div>
+<div class="form-group">
+    <label for="studentphoto">Upload New Photo  </label>
+    <input type="file" class="form-control" id="photo" name="photo"  value="<?php echo htmlentities($row['studentPhoto']);?>" />
+  </div>
 
 
   <?php } ?>
@@ -109,15 +119,8 @@ while($row=mysqli_fetch_array($sql))
                             </div>
                             </div>
                     </div>
-                  
                 </div>
-
             </div>
-
-
-
-
-
         </div>
     </div>
   <?php include('includes/footer.php');?>

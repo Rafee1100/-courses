@@ -1,11 +1,13 @@
 <?php
 session_start();
 include('includes/config.php');
-error_reporting(0);
-if(strlen($_SESSION['login'])==0)
-{   
+if(strlen($_SESSION['alogin'])==0)
+    {   
 header('location:index.php');
-}else{
+}
+else{
+
+
 
 ?>
 
@@ -16,16 +18,17 @@ header('location:index.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <meta http-equiv="refresh" content="300; url=http://localhost/courses/logout.php ">
     <title>Enroll History</title>
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="../assets/css/style.css" rel="stylesheet" />
 </head>
 
 <body>
 <?php include('includes/header.php');?>
     
-<?php if($_SESSION['login']!="")
+<?php if($_SESSION['alogin']!="")
 {
  include('includes/menubar.php');
 }
@@ -53,17 +56,19 @@ header('location:index.php');
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Course Name </th>
-                                            <th>Session </th>
-                                            <th> Department</th>
-                                             <th>Level</th>
-                                                <th>Semester</th>
-                                             <th>Enrollment Date</th>
+                                                
+                                                    <th>Student Reg no </th>
+                                            <th>IP  </th>
+                                            <th>Login Time </th>
+                                            
+                                                <th>Logout Time</th>
+                                             <th>Status</th>
+                                    
                                         </tr>
                                     </thead>
                                     <tbody>
 <?php
-$sql=mysqli_query($con,"select courseenrolls.course as cid, course.courseName as courname,session.session as session,department.department as dept,level.level as level,courseenrolls.enrollDate as edate ,semester.semester as sem from courseenrolls join course on course.id=courseenrolls.course join session on session.id=courseenrolls.session join department on department.id=courseenrolls.department join level on level.id=courseenrolls.level  join semester on semester.id=courseenrolls.semester  where courseenrolls.studentRegno='".$_SESSION['login']."'");
+$sql=mysqli_query($con,"select * from userlog");
 $cnt=1;
 while($row=mysqli_fetch_array($sql))
 {
@@ -72,14 +77,11 @@ while($row=mysqli_fetch_array($sql))
 
                                         <tr>
                                             <td><?php echo $cnt;?></td>
-                                            <td><?php echo htmlentities($row['courname']);?></td>
-                                            <td><?php echo htmlentities($row['session']);?></td>
-                                            <td><?php echo htmlentities($row['dept']);?></td>
-                                            <td><?php echo htmlentities($row['level']);?></td>
-                                            <td><?php echo htmlentities($row['sem']);?></td>
-                                             <td><?php echo htmlentities($row['edate']);?></td>
-                                            <td>
-                                            </td>
+                                              <td><?php echo htmlentities($row['studentRegno']);?></td>
+                                            <td><?php echo htmlentities($row['userip']);?></td>
+                                            <td><?php echo htmlentities($row['loginTime']);?></td>
+                                            <td><?php echo htmlentities($row['logout']);?></td>
+                                            <td><?php echo htmlentities($row['status']);?></td>
                                         </tr>
 <?php 
 $cnt++;
@@ -96,14 +98,17 @@ $cnt++;
             </div>
 
 
+
+
+
         </div>
     </div>
     
   <?php include('includes/footer.php');?>
     
-    <script src="assets/js/jquery-1.11.1.js"></script>
+    <script src="../assets/js/jquery-1.11.1.js"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
-    <script src="assets/js/bootstrap.js"></script>
+    <script src="../assets/js/bootstrap.js"></script>
 </body>
 </html>
 <?php } ?>

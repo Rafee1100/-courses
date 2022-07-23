@@ -48,8 +48,7 @@ exit();
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                              <li><a href="../index.php">Home </a></li>
                              <li><a href="index.php">Admin Login </a></li>
-                              <li><a href="../index.php">Student Login</a></li>
-        
+                              <li><a href="../student-login.php">Student Login</a></li>
 
                         </ul>
                     </div>
@@ -86,11 +85,9 @@ exit();
             </div>
         </div>
     </div>
-    <!-- CONTENT-WRAPPER SECTION END-->
+    
     <?php include('includes/footer.php');?>
-    <!-- FOOTER SECTION END-->
-    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-    <!-- CORE JQUERY SCRIPTS -->
+    
     <script src="../assets/js/jquery-1.11.1.js"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
     <script src="../assets/js/bootstrap.js"></script>

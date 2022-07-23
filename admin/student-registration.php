@@ -32,6 +32,7 @@ echo '<script>window.location.href=manage-students.php</script>';
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <meta http-equiv="refresh" content="300; url=http://localhost/courses/logout.php ">
     <title>Admin | Student Registration</title>
     <link href="../assets/css/bootstrap.css" rel="stylesheet" />
     <link href="../assets/css/font-awesome.css" rel="stylesheet" />
@@ -40,13 +41,13 @@ echo '<script>window.location.href=manage-students.php</script>';
 
 <body>
 <?php include('includes/header.php');?>
-    <!-- LOGO HEADER END-->
+    
 <?php if($_SESSION['alogin']!="")
 {
  include('includes/menubar.php');
 }
  ?>
-    <!-- MENU SECTION END-->
+   
     <div class="content-wrapper">
         <div class="container">
               <div class="row">
